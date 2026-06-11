@@ -12,5 +12,3 @@ jobs:
       - uses: actions/checkout@v4
       - name: Valida estrutura das skills
         run: bash scripts/validate-skills.sh
-      - name: Higiene de repositório público
-        run: bash scripts/check-public-hygiene.sh

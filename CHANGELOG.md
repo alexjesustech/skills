@@ -7,6 +7,18 @@ projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Unreleased]
 
+### Removido
+
+- Ferramentas de curadoria saíram do repositório (`scripts/check-public-hygiene.sh`
+  e o hook `pre-push`): a curadoria de publicação é função do mantenedor e roda
+  fora daqui. O CI público passa a validar somente a **estrutura** das skills.
+
+### Alterado
+
+- `scripts/ci-local.sh` segue como espelho exato do workflow (agora só
+  `validate-skills.sh`); `.githooks/` mantém apenas o `pre-commit`
+  (branch-guard + gitleaks).
+
 ## [0.1.0] — 2026-06-11
 
 ### Adicionado

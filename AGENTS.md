@@ -26,13 +26,11 @@ Este arquivo é a fonte única de regras; `CLAUDE.md` é um ponteiro.
 ## Qualidade e CI
 
 - **O gate verde é LOCAL e determinístico**: `bash scripts/ci-local.sh` espelha
-  exatamente o workflow (`validate-skills.sh` + `check-public-hygiene.sh`) —
-  verde local = verde remoto, sem depender do GitHub Actions. O Actions roda os
-  MESMOS scripts em push/PR como confirmação redundante e gate de contribuição
-  externa.
-- Hooks versionados em `.githooks/` (ative com `git config core.hooksPath
-  .githooks`): `pre-commit` (branch-guard + gitleaks) e `pre-push` (CI local +
-  curadoria com denylist privada do mantenedor).
+  exatamente o workflow (`validate-skills.sh`) — verde local = verde remoto,
+  sem depender do GitHub Actions. O Actions roda o MESMO script em push/PR
+  como confirmação redundante.
+- Hook versionado em `.githooks/` (ative com `git config core.hooksPath
+  .githooks`): `pre-commit` (branch-guard + gitleaks).
 - Documentação obrigatória: toda mudança atualiza o `CHANGELOG.md`
   (`[Unreleased]`, Keep a Changelog + SemVer). Versão da skill (`TOOL · vX.Y.Z`)
   acompanha mudanças de conteúdo da skill (SemVer por skill).
@@ -50,21 +48,11 @@ Este arquivo é a fonte única de regras; `CLAUDE.md` é um ponteiro.
 
 ## Curadoria de publicação (repositório PÚBLICO — regra inegociável)
 
-Nada entra neste repositório sem passar pela curadoria. Três camadas:
-
-1. **Passe de generalização (autor/agente):** antes de trazer qualquer conteúdo
-   derivado de material interno, remover/abstrair TODO acoplamento — nomes de
-   projetos privados, hostnames, caminhos de máquina, nomes de documentos
-   internos, detalhes de infraestrutura pessoal. Em caso de dúvida, não publica.
-2. **CI público (genérico):** `scripts/check-public-hygiene.sh` roda em todo
-   push/PR e bloqueia caminhos pessoais absolutos, hostnames internos
-   (`*.lan`/`*.local`), IPs de rede privada, chaves privadas e e-mails
-   não-públicos.
-3. **Gate local do mantenedor:** o `pre-push` versionado em `.githooks/` roda o
-   CI local e varre a árvore pushada com uma **denylist privada** (mantida FORA
-   deste repositório — versioná-la aqui exporia os próprios termos).
-   Fail-closed: sem denylist, sem push (contribuidor externo:
-   `SKIP_CURADORIA=1`).
+Todo conteúdo passa por **curadoria do mantenedor** antes da publicação —
+generalização completa (nenhuma referência a projeto, máquina, documento
+interno ou infraestrutura pessoal) e verificação por ferramenta própria, que
+roda fora deste repositório. O CI público valida a **estrutura** das skills.
+Em caso de dúvida sobre um conteúdo, ele não é publicado.
 
 ## Segurança
 
