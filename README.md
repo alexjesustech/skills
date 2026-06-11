@@ -35,8 +35,11 @@ extraídas de uso real e **generalizadas** para qualquer repositório.
 | `governanca/` | [validate-harness](./governanca/validate-harness/) | Gate estrutural do `.claude/` (~2s): frontmatter, settings.json, hooks, ADRs |
 | `mcp/` | [mcp-debug](./mcp/mcp-debug/) | Diagnostica tool calls MCP (códigos de erro, auditoria, queries) |
 | `mcp/` | [mcp-tool](./mcp/mcp-tool/) | Implementa/altera tool MCP — checklist contrato→teste→implementação→auditoria |
+| `operacao/` | [daemon-health-check](./operacao/daemon-health-check/) | Health-check de serviço daemon: unit systemd → endpoint → dependências externas |
 | `qualidade/` | [error-triage](./qualidade/error-triage/) | Classifica erro esperado × real via catálogo determinístico |
 | `qualidade/` | [harness-evals](./qualidade/harness-evals/) | Pirâmide de testes, métricas e gate de qualidade para código gerado por IA |
+| `qualidade/` | [pytest-async-testing](./qualidade/pytest-async-testing/) | Receitas pytest-asyncio: event loop, mocking de singletons, timeouts, sincronização |
+| `qualidade/` | [pytest-run-triage](./qualidade/pytest-run-triage/) | Roda a suíte pytest e faz triagem de falhas com file:line |
 | `qualidade/` | [resolve-knowndebt](./qualidade/resolve-knowndebt/) | Lista, prioriza e resolve dívidas `$knownDebts` em arch tests (Pest), mantendo o guard puro |
 | `scaffold/` | [scaffold-module-full](./scaffold/scaffold-module-full/) | Scaffold de módulo completo Laravel + React/Inertia (migration, testes, ACL) |
 | `scaffold/` | [shadcn](./scaffold/shadcn/) | Gestão de componentes shadcn/ui via CLI: composição, regras críticas, presets, smart merge (upstream: ui.shadcn.com) |

@@ -9,6 +9,16 @@ projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ### Adicionado
 
+- **qualidade/pytest-async-testing**, **qualidade/pytest-run-triage** e
+  **operacao/daemon-health-check** v1.0.0 — receitas pytest-asyncio (event
+  loop, mocking de singletons, timeouts, sincronização determinística com
+  `asyncio.Event`), execução de suíte com triagem de falhas file:line, e
+  health-check de daemon (systemd → endpoint → dependências). Renomeadas dos
+  nomes genéricos originais (`testing`, `run-tests`, `health-check`) ao serem
+  publicadas; a Receita 5 de sincronização teve um bug corrigido na
+  generalização (o `Event.set()` era inalcançável e o `await` pós-`cancel()`
+  não suprimia `CancelledError`). Nova categoria `operacao/`.
+
 - **dados/chunking-rules** v1.0.0 — governança determinística do pipeline de
   chunking: versionamento de modelo/parâmetros (mudou → reindex), invariante de
   modelo único, protocolo de cutover com dual-write e gate de regressão.
