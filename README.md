@@ -50,12 +50,12 @@ específica.
 O gate canônico é **local e determinístico** — não depende do GitHub Actions:
 
 ```bash
-bash scripts/ci-local.sh   # validate-skills + check-public-hygiene (espelho do workflow)
+bash scripts/ci-local.sh   # validate-skills (espelho do workflow)
 ```
 
-O GitHub Actions roda os mesmos scripts em todo push/PR como confirmação
-redundante. Hooks opcionais (recomendados): `git config core.hooksPath .githooks`
-ativa branch-guard + gitleaks no commit e o CI local no push.
+O GitHub Actions roda o mesmo script em todo push/PR como confirmação
+redundante. Hook opcional (recomendado): `git config core.hooksPath .githooks`
+ativa branch-guard + gitleaks no commit.
 
 ## Contribuindo
 

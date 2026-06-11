@@ -21,9 +21,11 @@ Issues e pull requests são bem-vindos — em português ou inglês.
    ```bash
    bash scripts/ci-local.sh
    ```
-   Opcional: `git config core.hooksPath .githooks` ativa os hooks do repo
-   (o `pre-push` inclui um passo de curadoria do mantenedor — contribuidores
-   externos usam `SKIP_CURADORIA=1 git push ...`; o CI cobre o resto).
+   Opcional: `git config core.hooksPath .githooks` ativa o `pre-commit` do
+   repo (branch-guard + gitleaks).
+   Antes do merge, o mantenedor aplica uma verificação própria de curadoria
+   sobre o PR; evite incluir caminhos pessoais, e-mails ou dados de ambiente
+   nos exemplos.
 4. Atualize o `CHANGELOG.md` (`[Unreleased]`).
 5. Skills auto-contidas: sem dependência de segredo, serviço pago ou caminho de
    máquina específica. Conteúdo derivado de terceiros credita o upstream e
