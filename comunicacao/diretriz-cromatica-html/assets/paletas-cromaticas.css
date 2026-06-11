@@ -1,0 +1,88 @@
+/* =====================================================================
+   Paletas cromáticas — diretriz-cromatica-html
+   Quatro esquemas aprovados (v1.0.0, jun 2026).
+   Uso: aplicar data-theme="atual|grafite|oxido|noite" no elemento <html>.
+   O esquema "atual" é também o fallback em :root.
+   Espaço de cor: OKLCH (hex equivalente sRGB em comentário).
+   ===================================================================== */
+
+/* Atual — papel-creme — referência de origem (dossiê editorial) */
+:root,
+html[data-theme="atual"] {
+  --paper: #f5f1e8;                            /* #f5f1e8 · papel — fundo da página */
+  --paper-code: #ebe3cf;                       /* #ebe3cf · papel-código — fundo de blocos de código */
+  --ink: #0d0c0a;                              /* #0d0c0a · tinta — títulos */
+  --ink-body: #1a1916;                         /* #1a1916 · tinta-corpo — destaques, links, strong */
+  --ink-text: #2d2a23;                         /* #2d2a23 · tinta-texto — corpo de texto */
+  --ink-soft: #3d3a32;                         /* #3d3a32 · tinta-suave — citações, texto secundário */
+  --ink-italic: #4a4438;                       /* #4a4438 · tinta-itálico — itálicos */
+  --kk-mono-fg: #807966;                       /* #807966 · mono — rótulos mono, marcadores de lista */
+  --kk-caption: #6b6557;                       /* #6b6557 · legenda — legendas, rodapé */
+  --rule-dark: #1a1916;                        /* #1a1916 · fio-escuro — réguas principais (masthead, thead) */
+  --rule-soft: #c9bda3;                        /* #c9bda3 · fio-suave — fios secundários, pontilhados */
+  --rule-divider: #d9cfb8;                     /* #d9cfb8 · fio-divisor — divisores leves */
+  --accent: #b9532b;                           /* #b9532b · acento — ênfase única (título, capitular) */
+}
+
+/* Grafite e vermelho — tokens neutros do design system; acento no vermelho destrutivo */
+html[data-theme="grafite"] {
+  --paper: oklch(0.99 0 0);                    /* #fcfcfc · papel — fundo da página */
+  --paper-code: oklch(0.955 0 0);              /* #f0f0f0 · papel-código — fundo de blocos de código */
+  --ink: oklch(0.15 0 0);                      /* #0b0b0b · tinta — títulos */
+  --ink-body: oklch(0.21 0 0);                 /* #181818 · tinta-corpo — destaques, links, strong */
+  --ink-text: oklch(0.27 0 0);                 /* #262626 · tinta-texto — corpo de texto */
+  --ink-soft: oklch(0.38 0 0);                 /* #424242 · tinta-suave — citações, texto secundário */
+  --ink-italic: oklch(0.35 0 0);               /* #3a3a3a · tinta-itálico — itálicos */
+  --kk-mono-fg: oklch(0.45 0 0);               /* #555555 · mono — rótulos mono, marcadores de lista */
+  --kk-caption: oklch(0.45 0 0);               /* #555555 · legenda — legendas, rodapé */
+  --rule-dark: oklch(0.21 0 0);                /* #181818 · fio-escuro — réguas principais (masthead, thead) */
+  --rule-soft: oklch(0.87 0 0);                /* #d4d4d4 · fio-suave — fios secundários, pontilhados */
+  --rule-divider: oklch(0.91 0 0);             /* #e1e1e1 · fio-divisor — divisores leves */
+  --accent: oklch(0.55 0.18 27);               /* #c53732 · acento — ênfase única (título, capitular) */
+}
+
+/* Papel-jornal e óxido — papel mais escuro e quente; acento oxblood */
+html[data-theme="oxido"] {
+  --paper: oklch(0.93 0.022 80);               /* #f0e7d8 · papel — fundo da página */
+  --paper-code: oklch(0.885 0.028 78);         /* #e3d7c5 · papel-código — fundo de blocos de código */
+  --ink: oklch(0.18 0.015 50);                 /* #17100c · tinta — títulos */
+  --ink-body: oklch(0.24 0.018 50);            /* #261d18 · tinta-corpo — destaques, links, strong */
+  --ink-text: oklch(0.3 0.02 55);              /* #362b24 · tinta-texto — corpo de texto */
+  --ink-soft: oklch(0.4 0.02 55);              /* #50453e · tinta-suave — citações, texto secundário */
+  --ink-italic: oklch(0.36 0.02 55);           /* #463b33 · tinta-itálico — itálicos */
+  --kk-mono-fg: oklch(0.5 0.03 65);            /* #706052 · mono — rótulos mono, marcadores de lista */
+  --kk-caption: oklch(0.46 0.025 60);          /* #63554a · legenda — legendas, rodapé */
+  --rule-dark: oklch(0.24 0.018 50);           /* #261d18 · fio-escuro — réguas principais (masthead, thead) */
+  --rule-soft: oklch(0.72 0.04 75);            /* #b4a189 · fio-suave — fios secundários, pontilhados */
+  --rule-divider: oklch(0.78 0.035 78);        /* #c4b59f · fio-divisor — divisores leves */
+  --accent: oklch(0.42 0.13 22);               /* #86262b · acento — ênfase única (título, capitular) */
+}
+
+/* Meia-noite — inversão para leitura noturna; na impressão reverte ao grafite */
+html[data-theme="noite"] {
+  --paper: oklch(0.21 0.01 70);                /* #1b1813 · papel — fundo da página */
+  --paper-code: oklch(0.27 0.012 70);          /* #2a2520 · papel-código — fundo de blocos de código */
+  --ink: oklch(0.95 0.012 85);                 /* #f2eee6 · tinta — títulos */
+  --ink-body: oklch(0.9 0.012 85);             /* #e1ded5 · tinta-corpo — destaques, links, strong */
+  --ink-text: oklch(0.84 0.012 85);            /* #cecac2 · tinta-texto — corpo de texto */
+  --ink-soft: oklch(0.74 0.012 85);            /* #aeaaa2 · tinta-suave — citações, texto secundário */
+  --ink-italic: oklch(0.78 0.012 85);          /* #bbb7af · tinta-itálico — itálicos */
+  --kk-mono-fg: oklch(0.6 0.02 80);            /* #867f73 · mono — rótulos mono, marcadores de lista */
+  --kk-caption: oklch(0.62 0.018 80);          /* #8c857a · legenda — legendas, rodapé */
+  --rule-dark: oklch(0.86 0.012 85);           /* #d4d0c8 · fio-escuro — réguas principais (masthead, thead) */
+  --rule-soft: oklch(0.4 0.015 75);            /* #4d473f · fio-suave — fios secundários, pontilhados */
+  --rule-divider: oklch(0.34 0.012 72);        /* #3c3731 · fio-divisor — divisores leves */
+  --accent: oklch(0.72 0.13 45);               /* #e7885d · acento — ênfase única (título, capitular) */
+}
+
+/* Impressão: o tema noturno reverte ao esquema grafite. */
+@media print {
+  html[data-theme="noite"] {
+    --paper: #ffffff; --paper-code: oklch(0.955 0 0);
+    --ink: oklch(0.15 0 0); --ink-body: oklch(0.21 0 0); --ink-text: oklch(0.27 0 0);
+    --ink-soft: oklch(0.38 0 0); --ink-italic: oklch(0.35 0 0);
+    --kk-mono-fg: oklch(0.45 0 0); --kk-caption: oklch(0.45 0 0);
+    --rule-dark: oklch(0.21 0 0); --rule-soft: oklch(0.87 0 0); --rule-divider: oklch(0.91 0 0);
+    --accent: oklch(0.55 0.18 27);
+  }
+}

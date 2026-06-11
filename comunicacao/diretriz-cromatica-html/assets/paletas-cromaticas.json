@@ -1,0 +1,390 @@
+{
+  "atual": {
+    "nome": "Atual — papel-creme",
+    "nota": "referência de origem (dossiê editorial)",
+    "tokens": {
+      "paper": {
+        "var": "--paper",
+        "nome": "papel",
+        "papel": "fundo da página",
+        "valor": "#f5f1e8",
+        "hex": "#f5f1e8"
+      },
+      "paper-code": {
+        "var": "--paper-code",
+        "nome": "papel-código",
+        "papel": "fundo de blocos de código",
+        "valor": "#ebe3cf",
+        "hex": "#ebe3cf"
+      },
+      "ink": {
+        "var": "--ink",
+        "nome": "tinta",
+        "papel": "títulos",
+        "valor": "#0d0c0a",
+        "hex": "#0d0c0a"
+      },
+      "ink-body": {
+        "var": "--ink-body",
+        "nome": "tinta-corpo",
+        "papel": "destaques, links, strong",
+        "valor": "#1a1916",
+        "hex": "#1a1916"
+      },
+      "ink-text": {
+        "var": "--ink-text",
+        "nome": "tinta-texto",
+        "papel": "corpo de texto",
+        "valor": "#2d2a23",
+        "hex": "#2d2a23"
+      },
+      "ink-soft": {
+        "var": "--ink-soft",
+        "nome": "tinta-suave",
+        "papel": "citações, texto secundário",
+        "valor": "#3d3a32",
+        "hex": "#3d3a32"
+      },
+      "ink-italic": {
+        "var": "--ink-italic",
+        "nome": "tinta-itálico",
+        "papel": "itálicos",
+        "valor": "#4a4438",
+        "hex": "#4a4438"
+      },
+      "kk-mono-fg": {
+        "var": "--kk-mono-fg",
+        "nome": "mono",
+        "papel": "rótulos mono, marcadores de lista",
+        "valor": "#807966",
+        "hex": "#807966"
+      },
+      "kk-caption": {
+        "var": "--kk-caption",
+        "nome": "legenda",
+        "papel": "legendas, rodapé",
+        "valor": "#6b6557",
+        "hex": "#6b6557"
+      },
+      "rule-dark": {
+        "var": "--rule-dark",
+        "nome": "fio-escuro",
+        "papel": "réguas principais (masthead, thead)",
+        "valor": "#1a1916",
+        "hex": "#1a1916"
+      },
+      "rule-soft": {
+        "var": "--rule-soft",
+        "nome": "fio-suave",
+        "papel": "fios secundários, pontilhados",
+        "valor": "#c9bda3",
+        "hex": "#c9bda3"
+      },
+      "rule-divider": {
+        "var": "--rule-divider",
+        "nome": "fio-divisor",
+        "papel": "divisores leves",
+        "valor": "#d9cfb8",
+        "hex": "#d9cfb8"
+      },
+      "accent": {
+        "var": "--accent",
+        "nome": "acento",
+        "papel": "ênfase única (título, capitular)",
+        "valor": "#b9532b",
+        "hex": "#b9532b"
+      }
+    }
+  },
+  "grafite": {
+    "nome": "Grafite e vermelho",
+    "nota": "tokens neutros do design system; acento no vermelho destrutivo",
+    "tokens": {
+      "paper": {
+        "var": "--paper",
+        "nome": "papel",
+        "papel": "fundo da página",
+        "valor": "oklch(0.99 0 0)",
+        "hex": "#fcfcfc"
+      },
+      "paper-code": {
+        "var": "--paper-code",
+        "nome": "papel-código",
+        "papel": "fundo de blocos de código",
+        "valor": "oklch(0.955 0 0)",
+        "hex": "#f0f0f0"
+      },
+      "ink": {
+        "var": "--ink",
+        "nome": "tinta",
+        "papel": "títulos",
+        "valor": "oklch(0.15 0 0)",
+        "hex": "#0b0b0b"
+      },
+      "ink-body": {
+        "var": "--ink-body",
+        "nome": "tinta-corpo",
+        "papel": "destaques, links, strong",
+        "valor": "oklch(0.21 0 0)",
+        "hex": "#181818"
+      },
+      "ink-text": {
+        "var": "--ink-text",
+        "nome": "tinta-texto",
+        "papel": "corpo de texto",
+        "valor": "oklch(0.27 0 0)",
+        "hex": "#262626"
+      },
+      "ink-soft": {
+        "var": "--ink-soft",
+        "nome": "tinta-suave",
+        "papel": "citações, texto secundário",
+        "valor": "oklch(0.38 0 0)",
+        "hex": "#424242"
+      },
+      "ink-italic": {
+        "var": "--ink-italic",
+        "nome": "tinta-itálico",
+        "papel": "itálicos",
+        "valor": "oklch(0.35 0 0)",
+        "hex": "#3a3a3a"
+      },
+      "kk-mono-fg": {
+        "var": "--kk-mono-fg",
+        "nome": "mono",
+        "papel": "rótulos mono, marcadores de lista",
+        "valor": "oklch(0.45 0 0)",
+        "hex": "#555555"
+      },
+      "kk-caption": {
+        "var": "--kk-caption",
+        "nome": "legenda",
+        "papel": "legendas, rodapé",
+        "valor": "oklch(0.45 0 0)",
+        "hex": "#555555"
+      },
+      "rule-dark": {
+        "var": "--rule-dark",
+        "nome": "fio-escuro",
+        "papel": "réguas principais (masthead, thead)",
+        "valor": "oklch(0.21 0 0)",
+        "hex": "#181818"
+      },
+      "rule-soft": {
+        "var": "--rule-soft",
+        "nome": "fio-suave",
+        "papel": "fios secundários, pontilhados",
+        "valor": "oklch(0.87 0 0)",
+        "hex": "#d4d4d4"
+      },
+      "rule-divider": {
+        "var": "--rule-divider",
+        "nome": "fio-divisor",
+        "papel": "divisores leves",
+        "valor": "oklch(0.91 0 0)",
+        "hex": "#e1e1e1"
+      },
+      "accent": {
+        "var": "--accent",
+        "nome": "acento",
+        "papel": "ênfase única (título, capitular)",
+        "valor": "oklch(0.55 0.18 27)",
+        "hex": "#c53732"
+      }
+    }
+  },
+  "oxido": {
+    "nome": "Papel-jornal e óxido",
+    "nota": "papel mais escuro e quente; acento oxblood",
+    "tokens": {
+      "paper": {
+        "var": "--paper",
+        "nome": "papel",
+        "papel": "fundo da página",
+        "valor": "oklch(0.93 0.022 80)",
+        "hex": "#f0e7d8"
+      },
+      "paper-code": {
+        "var": "--paper-code",
+        "nome": "papel-código",
+        "papel": "fundo de blocos de código",
+        "valor": "oklch(0.885 0.028 78)",
+        "hex": "#e3d7c5"
+      },
+      "ink": {
+        "var": "--ink",
+        "nome": "tinta",
+        "papel": "títulos",
+        "valor": "oklch(0.18 0.015 50)",
+        "hex": "#17100c"
+      },
+      "ink-body": {
+        "var": "--ink-body",
+        "nome": "tinta-corpo",
+        "papel": "destaques, links, strong",
+        "valor": "oklch(0.24 0.018 50)",
+        "hex": "#261d18"
+      },
+      "ink-text": {
+        "var": "--ink-text",
+        "nome": "tinta-texto",
+        "papel": "corpo de texto",
+        "valor": "oklch(0.3 0.02 55)",
+        "hex": "#362b24"
+      },
+      "ink-soft": {
+        "var": "--ink-soft",
+        "nome": "tinta-suave",
+        "papel": "citações, texto secundário",
+        "valor": "oklch(0.4 0.02 55)",
+        "hex": "#50453e"
+      },
+      "ink-italic": {
+        "var": "--ink-italic",
+        "nome": "tinta-itálico",
+        "papel": "itálicos",
+        "valor": "oklch(0.36 0.02 55)",
+        "hex": "#463b33"
+      },
+      "kk-mono-fg": {
+        "var": "--kk-mono-fg",
+        "nome": "mono",
+        "papel": "rótulos mono, marcadores de lista",
+        "valor": "oklch(0.5 0.03 65)",
+        "hex": "#706052"
+      },
+      "kk-caption": {
+        "var": "--kk-caption",
+        "nome": "legenda",
+        "papel": "legendas, rodapé",
+        "valor": "oklch(0.46 0.025 60)",
+        "hex": "#63554a"
+      },
+      "rule-dark": {
+        "var": "--rule-dark",
+        "nome": "fio-escuro",
+        "papel": "réguas principais (masthead, thead)",
+        "valor": "oklch(0.24 0.018 50)",
+        "hex": "#261d18"
+      },
+      "rule-soft": {
+        "var": "--rule-soft",
+        "nome": "fio-suave",
+        "papel": "fios secundários, pontilhados",
+        "valor": "oklch(0.72 0.04 75)",
+        "hex": "#b4a189"
+      },
+      "rule-divider": {
+        "var": "--rule-divider",
+        "nome": "fio-divisor",
+        "papel": "divisores leves",
+        "valor": "oklch(0.78 0.035 78)",
+        "hex": "#c4b59f"
+      },
+      "accent": {
+        "var": "--accent",
+        "nome": "acento",
+        "papel": "ênfase única (título, capitular)",
+        "valor": "oklch(0.42 0.13 22)",
+        "hex": "#86262b"
+      }
+    }
+  },
+  "noite": {
+    "nome": "Meia-noite",
+    "nota": "inversão para leitura noturna; na impressão reverte ao grafite",
+    "tokens": {
+      "paper": {
+        "var": "--paper",
+        "nome": "papel",
+        "papel": "fundo da página",
+        "valor": "oklch(0.21 0.01 70)",
+        "hex": "#1b1813"
+      },
+      "paper-code": {
+        "var": "--paper-code",
+        "nome": "papel-código",
+        "papel": "fundo de blocos de código",
+        "valor": "oklch(0.27 0.012 70)",
+        "hex": "#2a2520"
+      },
+      "ink": {
+        "var": "--ink",
+        "nome": "tinta",
+        "papel": "títulos",
+        "valor": "oklch(0.95 0.012 85)",
+        "hex": "#f2eee6"
+      },
+      "ink-body": {
+        "var": "--ink-body",
+        "nome": "tinta-corpo",
+        "papel": "destaques, links, strong",
+        "valor": "oklch(0.9 0.012 85)",
+        "hex": "#e1ded5"
+      },
+      "ink-text": {
+        "var": "--ink-text",
+        "nome": "tinta-texto",
+        "papel": "corpo de texto",
+        "valor": "oklch(0.84 0.012 85)",
+        "hex": "#cecac2"
+      },
+      "ink-soft": {
+        "var": "--ink-soft",
+        "nome": "tinta-suave",
+        "papel": "citações, texto secundário",
+        "valor": "oklch(0.74 0.012 85)",
+        "hex": "#aeaaa2"
+      },
+      "ink-italic": {
+        "var": "--ink-italic",
+        "nome": "tinta-itálico",
+        "papel": "itálicos",
+        "valor": "oklch(0.78 0.012 85)",
+        "hex": "#bbb7af"
+      },
+      "kk-mono-fg": {
+        "var": "--kk-mono-fg",
+        "nome": "mono",
+        "papel": "rótulos mono, marcadores de lista",
+        "valor": "oklch(0.6 0.02 80)",
+        "hex": "#867f73"
+      },
+      "kk-caption": {
+        "var": "--kk-caption",
+        "nome": "legenda",
+        "papel": "legendas, rodapé",
+        "valor": "oklch(0.62 0.018 80)",
+        "hex": "#8c857a"
+      },
+      "rule-dark": {
+        "var": "--rule-dark",
+        "nome": "fio-escuro",
+        "papel": "réguas principais (masthead, thead)",
+        "valor": "oklch(0.86 0.012 85)",
+        "hex": "#d4d0c8"
+      },
+      "rule-soft": {
+        "var": "--rule-soft",
+        "nome": "fio-suave",
+        "papel": "fios secundários, pontilhados",
+        "valor": "oklch(0.4 0.015 75)",
+        "hex": "#4d473f"
+      },
+      "rule-divider": {
+        "var": "--rule-divider",
+        "nome": "fio-divisor",
+        "papel": "divisores leves",
+        "valor": "oklch(0.34 0.012 72)",
+        "hex": "#3c3731"
+      },
+      "accent": {
+        "var": "--accent",
+        "nome": "acento",
+        "papel": "ênfase única (título, capitular)",
+        "valor": "oklch(0.72 0.13 45)",
+        "hex": "#e7885d"
+      }
+    }
+  }
+}

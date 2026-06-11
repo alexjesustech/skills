@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="atual">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diretriz cromática — documentos HTML</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
+  <style>
+    /* Esquemas cromáticos — o documento aplica a si mesmo o esquema ativo */
+    html[data-theme="atual"]{
+      --paper: #f5f1e8;
+      --paper-code: #ebe3cf;
+      --ink: #0d0c0a;
+      --ink-body: #1a1916;
+      --ink-text: #2d2a23;
+      --ink-soft: #3d3a32;
+      --ink-italic: #4a4438;
+      --kk-mono-fg: #807966;
+      --kk-caption: #6b6557;
+      --rule-dark: #1a1916;
+      --rule-soft: #c9bda3;
+      --rule-divider: #d9cfb8;
+      --accent: #b9532b;
+    }
+    html[data-theme="grafite"]{
+      --paper: oklch(0.99 0 0);
+      --paper-code: oklch(0.955 0 0);
+      --ink: oklch(0.15 0 0);
+      --ink-body: oklch(0.21 0 0);
+      --ink-text: oklch(0.27 0 0);
+      --ink-soft: oklch(0.38 0 0);
+      --ink-italic: oklch(0.35 0 0);
+      --kk-mono-fg: oklch(0.45 0 0);
+      --kk-caption: oklch(0.45 0 0);
+      --rule-dark: oklch(0.21 0 0);
+      --rule-soft: oklch(0.87 0 0);
+      --rule-divider: oklch(0.91 0 0);
+      --accent: oklch(0.55 0.18 27);
+    }
+    html[data-theme="oxido"]{
+      --paper: oklch(0.93 0.022 80);
+      --paper-code: oklch(0.885 0.028 78);
+      --ink: oklch(0.18 0.015 50);
+      --ink-body: oklch(0.24 0.018 50);
+      --ink-text: oklch(0.3 0.02 55);
+      --ink-soft: oklch(0.4 0.02 55);
+      --ink-italic: oklch(0.36 0.02 55);
+      --kk-mono-fg: oklch(0.5 0.03 65);
+      --kk-caption: oklch(0.46 0.025 60);
+      --rule-dark: oklch(0.24 0.018 50);
+      --rule-soft: oklch(0.72 0.04 75);
+      --rule-divider: oklch(0.78 0.035 78);
+      --accent: oklch(0.42 0.13 22);
+    }
+    html[data-theme="noite"]{
+      --paper: oklch(0.21 0.01 70);
+      --paper-code: oklch(0.27 0.012 70);
+      --ink: oklch(0.95 0.012 85);
+      --ink-body: oklch(0.9 0.012 85);
+      --ink-text: oklch(0.84 0.012 85);
+      --ink-soft: oklch(0.74 0.012 85);
+      --ink-italic: oklch(0.78 0.012 85);
+      --kk-mono-fg: oklch(0.6 0.02 80);
+      --kk-caption: oklch(0.62 0.018 80);
+      --rule-dark: oklch(0.86 0.012 85);
+      --rule-soft: oklch(0.4 0.015 75);
+      --rule-divider: oklch(0.34 0.012 72);
+      --accent: oklch(0.72 0.13 45);
+    }
+    :root{
+      --paper: #f5f1e8;
+      --paper-code: #ebe3cf;
+      --ink: #0d0c0a;
+      --ink-body: #1a1916;
+      --ink-text: #2d2a23;
+      --ink-soft: #3d3a32;
+      --ink-italic: #4a4438;
+      --kk-mono-fg: #807966;
+      --kk-caption: #6b6557;
+      --rule-dark: #1a1916;
+      --rule-soft: #c9bda3;
+      --rule-divider: #d9cfb8;
+      --accent: #b9532b;
+      --font-serif:"Newsreader","Source Serif Pro",Georgia,serif;
+      --font-sans:"Inter",system-ui,-apple-system,sans-serif;
+      --font-mono:"JetBrains Mono",ui-monospace,monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--paper)}
+    body{
+      color:var(--ink-text); font-family:var(--font-sans); font-size:13.5px; line-height:1.6;
+      max-width:900px; margin:0 auto; padding:54px 64px 80px;
+      font-feature-settings:"lnum" 1,"tnum" 1; font-variant-numeric:tabular-nums;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    ::selection{background:var(--ink-body);color:var(--paper)}
+    .mast{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:14px;margin-bottom:26px;border-bottom:2px solid var(--rule-dark)}
+    .mast .pub{font-family:var(--font-serif);font-size:21px;font-style:italic;font-weight:500;color:var(--ink-body);line-height:1}
+    .mast .sub{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--kk-mono-fg);margin-top:9px}
+    .mast .right{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--kk-caption);text-align:right;line-height:1.9}
+    .mast .right .date{color:var(--ink-body)}
+    .temas{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 28px}
+    .temas-label{font-family:var(--font-mono);font-size:9.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--kk-mono-fg);margin-right:4px}
+    .temas button{display:flex;align-items:center;gap:8px;border:1px solid var(--rule-soft);background:transparent;border-radius:2px;padding:6px 11px;cursor:pointer;font-family:var(--font-mono);font-size:9.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--kk-caption)}
+    .temas button:hover{border-color:var(--ink-soft);color:var(--ink-body)}
+    .temas button[aria-pressed="true"]{border-color:var(--ink-body);background:var(--paper-code);color:var(--ink-body)}
+    .temas button:focus-visible{outline:2px solid var(--kk-mono-fg);outline-offset:2px}
+    .temas .tri{display:flex;border:1px solid var(--rule-soft);border-radius:2px;overflow:hidden}
+    .temas .tri i{display:block;width:11px;height:14px}
+    .lead{font-family:var(--font-serif);font-size:16px;font-weight:500;line-height:1.55;color:var(--ink-body);margin:0 0 22px;max-width:700px;text-wrap:pretty}
+    .regras{margin:0 0 6px;border-top:1px solid var(--rule-dark);padding-top:18px}
+    .regras h2{margin-top:0}
+    h2{font-family:var(--font-serif);font-size:23px;font-weight:600;letter-spacing:-.015em;color:var(--ink);line-height:1.15;margin:0 0 10px}
+    ol{margin:0 0 14px;padding-left:20px}
+    ol li{margin-bottom:7px;line-height:1.55;text-wrap:pretty}
+    ol li::marker{color:var(--kk-mono-fg);font-family:var(--font-mono);font-size:.9em}
+    strong{color:var(--ink-body);font-weight:600}
+    code{font-family:var(--font-mono);font-size:.88em;background:var(--paper-code);padding:1px 5px;border-radius:2px;color:var(--ink-body)}
+    .pal{margin-top:30px;border-top:1px solid var(--rule-dark);padding-top:20px;break-inside:avoid}
+    .palhead{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:6px}
+    .nota{font-size:12px;color:var(--ink-soft);margin:0;text-wrap:pretty}
+    .bar{display:flex;flex:0 0 auto;border:1px solid var(--rule-soft);border-radius:2px;overflow:hidden;margin-top:4px}
+    .chip{display:block;width:22px;height:30px}
+    table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:12px}
+    th{font-family:var(--font-mono);font-size:9.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--kk-mono-fg);text-align:left;padding:9px 14px 9px 0;border-bottom:1.5px solid var(--rule-dark)}
+    td{padding:7px 14px 7px 0;border-bottom:1px dotted var(--rule-soft);vertical-align:middle;line-height:1.45;color:var(--ink-text)}
+    tbody tr:last-child td{border-bottom:none}
+    th:last-child,td:last-child{padding-right:0}
+    .sw{display:block;width:30px;height:18px;border:1px solid var(--rule-soft);border-radius:2px}
+    td code{font-size:11px}
+    .nm{font-family:var(--font-serif);font-size:13px;font-style:italic;font-weight:500;color:var(--ink-body)}
+    .val{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-body);white-space:nowrap}
+    .foot{margin-top:48px;padding-top:14px;border-top:1px solid var(--rule-soft);font-family:var(--font-serif);font-size:11.5px;font-style:italic;color:var(--kk-caption);line-height:1.6}
+    .foot code{font-style:normal}
+    @media print{
+      body{max-width:none;padding:0;font-size:11pt}
+      .temas{display:none}
+      .pal,tr{break-inside:avoid}
+      .sw,.chip{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      html[data-theme="noite"]{
+      --paper: oklch(0.99 0 0);
+      --paper-code: oklch(0.955 0 0);
+      --ink: oklch(0.15 0 0);
+      --ink-body: oklch(0.21 0 0);
+      --ink-text: oklch(0.27 0 0);
+      --ink-soft: oklch(0.38 0 0);
+      --ink-italic: oklch(0.35 0 0);
+      --kk-mono-fg: oklch(0.45 0 0);
+      --kk-caption: oklch(0.45 0 0);
+      --rule-dark: oklch(0.21 0 0);
+      --rule-soft: oklch(0.87 0 0);
+      --rule-divider: oklch(0.91 0 0);
+      --accent: oklch(0.55 0.18 27);
+        --paper:#ffffff;
+      }
+    }
+    @media (max-width:760px){
+      body{padding:34px 22px 60px}
+      .palhead{flex-direction:column;gap:10px}
+      table{font-size:11px}
+      .val{white-space:normal}
+    }
+  </style>
+</head>
+<body>
+<header class="mast">
+  <div class="left">
+    <div class="pub">Diretriz cromática</div>
+    <div class="sub">Documentos HTML · Claude Code</div>
+  </div>
+  <div class="right">
+    <div class="date">10 jun 2026</div>
+    <div>Versão 1.0.0 · Vigente</div>
+  </div>
+</header>
+<nav class="temas" aria-label="Esquema de visualização">
+  <span class="temas-label">Visualização</span>
+    <button type="button" data-tema="atual" aria-pressed="false"><span class="tri"><i style="background:#f5f1e8"></i><i style="background:#1a1916"></i><i style="background:#b9532b"></i></span><span>P1 · atual</span></button>
+    <button type="button" data-tema="grafite" aria-pressed="false"><span class="tri"><i style="background:#fcfcfc"></i><i style="background:#181818"></i><i style="background:#c53732"></i></span><span>P2 · grafite</span></button>
+    <button type="button" data-tema="oxido" aria-pressed="false"><span class="tri"><i style="background:#f0e7d8"></i><i style="background:#261d18"></i><i style="background:#86262b"></i></span><span>P3 · oxido</span></button>
+    <button type="button" data-tema="noite" aria-pressed="false"><span class="tri"><i style="background:#1b1813"></i><i style="background:#e1ded5"></i><i style="background:#e7885d"></i></span><span>P4 · noite</span></button>
+</nav>
+<p class="lead">Quatro esquemas cromáticos para documentos HTML gerados por Claude Code — um de referência e três alternativos, aprovados em 09 jun 2026. O esquema selecionado acima aplica-se a este próprio documento e persiste entre sessões.</p>
+<section class="regras" data-screen-label="Regras de aplicação">
+  <h2>Regras de aplicação</h2>
+  <ol>
+    <li><strong>Tokens canônicos em OKLCH.</strong> Os valores declarados são a fonte da verdade; o hex sRGB é equivalência informativa. Novos tons derivam-se em OKLCH, nunca em rgb/hsl.</li>
+    <li><strong>Seleção por <code>data-theme</code></strong> no elemento <code>&lt;html&gt;</code> (<code>atual | grafite | oxido | noite</code>), com <code>:root</code> = atual como fallback.</li>
+    <li><strong>Alternância no próprio documento.</strong> Todo documento expõe o seletor de visualização e persiste a escolha em <code>localStorage</code> (chave <code>diretriz-tema</code>).</li>
+    <li><strong>Um único acento saturado por esquema</strong>, reservado a ênfase pontual (itálico do título, capitular, marcador). Sem cores semafóricas de sucesso/alerta/informação.</li>
+    <li><strong>Impressão:</strong> o esquema meia-noite reverte ao grafite sobre papel branco; o seletor é ocultado.</li>
+    <li><strong>Tipografia:</strong> Newsreader (títulos e serifa), Inter (corpo), JetBrains Mono (rótulos e código); valores numéricos com <code>tabular-nums</code>.</li>
+    <li><strong>Consumo:</strong> <code>paletas-cromaticas.css</code> (folha pronta) e <code>paletas-cromaticas.json</code> (automação); a skill <code>diretriz-cromatica-html</code> operacionaliza esta diretriz no Claude Code.</li>
+  </ol>
+</section>
+
+  <section class="pal" data-screen-label="P1 Atual — papel-creme">
+    <div class="palhead">
+      <div>
+        <h2>P1 · Atual — papel-creme</h2>
+        <p class="nota">data-theme=&quot;atual&quot; — referência de origem (dossiê editorial).</p>
+      </div>
+      <div class="bar"><span class="chip" style="background:#f5f1e8" title="papel"></span><span class="chip" style="background:#ebe3cf" title="papel-código"></span><span class="chip" style="background:#0d0c0a" title="tinta"></span><span class="chip" style="background:#1a1916" title="tinta-corpo"></span><span class="chip" style="background:#2d2a23" title="tinta-texto"></span><span class="chip" style="background:#3d3a32" title="tinta-suave"></span><span class="chip" style="background:#4a4438" title="tinta-itálico"></span><span class="chip" style="background:#807966" title="mono"></span><span class="chip" style="background:#6b6557" title="legenda"></span><span class="chip" style="background:#1a1916" title="fio-escuro"></span><span class="chip" style="background:#c9bda3" title="fio-suave"></span><span class="chip" style="background:#d9cfb8" title="fio-divisor"></span><span class="chip" style="background:#b9532b" title="acento"></span></div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Amostra</th><th>Token</th><th>Nome</th><th>Papel</th><th>Valor declarado</th><th>Hex (sRGB)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sw" style="background:#f5f1e8"></span></td>
+          <td><code>--paper</code></td>
+          <td class="nm">papel</td>
+          <td>fundo da página</td>
+          <td class="val">#f5f1e8</td>
+          <td class="val">#f5f1e8</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#ebe3cf"></span></td>
+          <td><code>--paper-code</code></td>
+          <td class="nm">papel-código</td>
+          <td>fundo de blocos de código</td>
+          <td class="val">#ebe3cf</td>
+          <td class="val">#ebe3cf</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#0d0c0a"></span></td>
+          <td><code>--ink</code></td>
+          <td class="nm">tinta</td>
+          <td>títulos</td>
+          <td class="val">#0d0c0a</td>
+          <td class="val">#0d0c0a</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#1a1916"></span></td>
+          <td><code>--ink-body</code></td>
+          <td class="nm">tinta-corpo</td>
+          <td>destaques, links, strong</td>
+          <td class="val">#1a1916</td>
+          <td class="val">#1a1916</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#2d2a23"></span></td>
+          <td><code>--ink-text</code></td>
+          <td class="nm">tinta-texto</td>
+          <td>corpo de texto</td>
+          <td class="val">#2d2a23</td>
+          <td class="val">#2d2a23</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#3d3a32"></span></td>
+          <td><code>--ink-soft</code></td>
+          <td class="nm">tinta-suave</td>
+          <td>citações, texto secundário</td>
+          <td class="val">#3d3a32</td>
+          <td class="val">#3d3a32</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#4a4438"></span></td>
+          <td><code>--ink-italic</code></td>
+          <td class="nm">tinta-itálico</td>
+          <td>itálicos</td>
+          <td class="val">#4a4438</td>
+          <td class="val">#4a4438</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#807966"></span></td>
+          <td><code>--kk-mono-fg</code></td>
+          <td class="nm">mono</td>
+          <td>rótulos mono, marcadores de lista</td>
+          <td class="val">#807966</td>
+          <td class="val">#807966</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#6b6557"></span></td>
+          <td><code>--kk-caption</code></td>
+          <td class="nm">legenda</td>
+          <td>legendas, rodapé</td>
+          <td class="val">#6b6557</td>
+          <td class="val">#6b6557</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#1a1916"></span></td>
+          <td><code>--rule-dark</code></td>
+          <td class="nm">fio-escuro</td>
+          <td>réguas principais (masthead, thead)</td>
+          <td class="val">#1a1916</td>
+          <td class="val">#1a1916</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#c9bda3"></span></td>
+          <td><code>--rule-soft</code></td>
+          <td class="nm">fio-suave</td>
+          <td>fios secundários, pontilhados</td>
+          <td class="val">#c9bda3</td>
+          <td class="val">#c9bda3</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#d9cfb8"></span></td>
+          <td><code>--rule-divider</code></td>
+          <td class="nm">fio-divisor</td>
+          <td>divisores leves</td>
+          <td class="val">#d9cfb8</td>
+          <td class="val">#d9cfb8</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#b9532b"></span></td>
+          <td><code>--accent</code></td>
+          <td class="nm">acento</td>
+          <td>ênfase única (título, capitular)</td>
+          <td class="val">#b9532b</td>
+          <td class="val">#b9532b</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="pal" data-screen-label="P2 Grafite e vermelho">
+    <div class="palhead">
+      <div>
+        <h2>P2 · Grafite e vermelho</h2>
+        <p class="nota">data-theme=&quot;grafite&quot; — tokens neutros do design system; acento no vermelho destrutivo.</p>
+      </div>
+      <div class="bar"><span class="chip" style="background:#fcfcfc" title="papel"></span><span class="chip" style="background:#f0f0f0" title="papel-código"></span><span class="chip" style="background:#0b0b0b" title="tinta"></span><span class="chip" style="background:#181818" title="tinta-corpo"></span><span class="chip" style="background:#262626" title="tinta-texto"></span><span class="chip" style="background:#424242" title="tinta-suave"></span><span class="chip" style="background:#3a3a3a" title="tinta-itálico"></span><span class="chip" style="background:#555555" title="mono"></span><span class="chip" style="background:#555555" title="legenda"></span><span class="chip" style="background:#181818" title="fio-escuro"></span><span class="chip" style="background:#d4d4d4" title="fio-suave"></span><span class="chip" style="background:#e1e1e1" title="fio-divisor"></span><span class="chip" style="background:#c53732" title="acento"></span></div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Amostra</th><th>Token</th><th>Nome</th><th>Papel</th><th>Valor declarado</th><th>Hex (sRGB)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sw" style="background:#fcfcfc"></span></td>
+          <td><code>--paper</code></td>
+          <td class="nm">papel</td>
+          <td>fundo da página</td>
+          <td class="val">oklch(0.99 0 0)</td>
+          <td class="val">#fcfcfc</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#f0f0f0"></span></td>
+          <td><code>--paper-code</code></td>
+          <td class="nm">papel-código</td>
+          <td>fundo de blocos de código</td>
+          <td class="val">oklch(0.955 0 0)</td>
+          <td class="val">#f0f0f0</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#0b0b0b"></span></td>
+          <td><code>--ink</code></td>
+          <td class="nm">tinta</td>
+          <td>títulos</td>
+          <td class="val">oklch(0.15 0 0)</td>
+          <td class="val">#0b0b0b</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#181818"></span></td>
+          <td><code>--ink-body</code></td>
+          <td class="nm">tinta-corpo</td>
+          <td>destaques, links, strong</td>
+          <td class="val">oklch(0.21 0 0)</td>
+          <td class="val">#181818</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#262626"></span></td>
+          <td><code>--ink-text</code></td>
+          <td class="nm">tinta-texto</td>
+          <td>corpo de texto</td>
+          <td class="val">oklch(0.27 0 0)</td>
+          <td class="val">#262626</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#424242"></span></td>
+          <td><code>--ink-soft</code></td>
+          <td class="nm">tinta-suave</td>
+          <td>citações, texto secundário</td>
+          <td class="val">oklch(0.38 0 0)</td>
+          <td class="val">#424242</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#3a3a3a"></span></td>
+          <td><code>--ink-italic</code></td>
+          <td class="nm">tinta-itálico</td>
+          <td>itálicos</td>
+          <td class="val">oklch(0.35 0 0)</td>
+          <td class="val">#3a3a3a</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#555555"></span></td>
+          <td><code>--kk-mono-fg</code></td>
+          <td class="nm">mono</td>
+          <td>rótulos mono, marcadores de lista</td>
+          <td class="val">oklch(0.45 0 0)</td>
+          <td class="val">#555555</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#555555"></span></td>
+          <td><code>--kk-caption</code></td>
+          <td class="nm">legenda</td>
+          <td>legendas, rodapé</td>
+          <td class="val">oklch(0.45 0 0)</td>
+          <td class="val">#555555</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#181818"></span></td>
+          <td><code>--rule-dark</code></td>
+          <td class="nm">fio-escuro</td>
+          <td>réguas principais (masthead, thead)</td>
+          <td class="val">oklch(0.21 0 0)</td>
+          <td class="val">#181818</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#d4d4d4"></span></td>
+          <td><code>--rule-soft</code></td>
+          <td class="nm">fio-suave</td>
+          <td>fios secundários, pontilhados</td>
+          <td class="val">oklch(0.87 0 0)</td>
+          <td class="val">#d4d4d4</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#e1e1e1"></span></td>
+          <td><code>--rule-divider</code></td>
+          <td class="nm">fio-divisor</td>
+          <td>divisores leves</td>
+          <td class="val">oklch(0.91 0 0)</td>
+          <td class="val">#e1e1e1</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#c53732"></span></td>
+          <td><code>--accent</code></td>
+          <td class="nm">acento</td>
+          <td>ênfase única (título, capitular)</td>
+          <td class="val">oklch(0.55 0.18 27)</td>
+          <td class="val">#c53732</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="pal" data-screen-label="P3 Papel-jornal e óxido">
+    <div class="palhead">
+      <div>
+        <h2>P3 · Papel-jornal e óxido</h2>
+        <p class="nota">data-theme=&quot;oxido&quot; — papel mais escuro e quente; acento oxblood.</p>
+      </div>
+      <div class="bar"><span class="chip" style="background:#f0e7d8" title="papel"></span><span class="chip" style="background:#e3d7c5" title="papel-código"></span><span class="chip" style="background:#17100c" title="tinta"></span><span class="chip" style="background:#261d18" title="tinta-corpo"></span><span class="chip" style="background:#362b24" title="tinta-texto"></span><span class="chip" style="background:#50453e" title="tinta-suave"></span><span class="chip" style="background:#463b33" title="tinta-itálico"></span><span class="chip" style="background:#706052" title="mono"></span><span class="chip" style="background:#63554a" title="legenda"></span><span class="chip" style="background:#261d18" title="fio-escuro"></span><span class="chip" style="background:#b4a189" title="fio-suave"></span><span class="chip" style="background:#c4b59f" title="fio-divisor"></span><span class="chip" style="background:#86262b" title="acento"></span></div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Amostra</th><th>Token</th><th>Nome</th><th>Papel</th><th>Valor declarado</th><th>Hex (sRGB)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sw" style="background:#f0e7d8"></span></td>
+          <td><code>--paper</code></td>
+          <td class="nm">papel</td>
+          <td>fundo da página</td>
+          <td class="val">oklch(0.93 0.022 80)</td>
+          <td class="val">#f0e7d8</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#e3d7c5"></span></td>
+          <td><code>--paper-code</code></td>
+          <td class="nm">papel-código</td>
+          <td>fundo de blocos de código</td>
+          <td class="val">oklch(0.885 0.028 78)</td>
+          <td class="val">#e3d7c5</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#17100c"></span></td>
+          <td><code>--ink</code></td>
+          <td class="nm">tinta</td>
+          <td>títulos</td>
+          <td class="val">oklch(0.18 0.015 50)</td>
+          <td class="val">#17100c</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#261d18"></span></td>
+          <td><code>--ink-body</code></td>
+          <td class="nm">tinta-corpo</td>
+          <td>destaques, links, strong</td>
+          <td class="val">oklch(0.24 0.018 50)</td>
+          <td class="val">#261d18</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#362b24"></span></td>
+          <td><code>--ink-text</code></td>
+          <td class="nm">tinta-texto</td>
+          <td>corpo de texto</td>
+          <td class="val">oklch(0.3 0.02 55)</td>
+          <td class="val">#362b24</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#50453e"></span></td>
+          <td><code>--ink-soft</code></td>
+          <td class="nm">tinta-suave</td>
+          <td>citações, texto secundário</td>
+          <td class="val">oklch(0.4 0.02 55)</td>
+          <td class="val">#50453e</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#463b33"></span></td>
+          <td><code>--ink-italic</code></td>
+          <td class="nm">tinta-itálico</td>
+          <td>itálicos</td>
+          <td class="val">oklch(0.36 0.02 55)</td>
+          <td class="val">#463b33</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#706052"></span></td>
+          <td><code>--kk-mono-fg</code></td>
+          <td class="nm">mono</td>
+          <td>rótulos mono, marcadores de lista</td>
+          <td class="val">oklch(0.5 0.03 65)</td>
+          <td class="val">#706052</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#63554a"></span></td>
+          <td><code>--kk-caption</code></td>
+          <td class="nm">legenda</td>
+          <td>legendas, rodapé</td>
+          <td class="val">oklch(0.46 0.025 60)</td>
+          <td class="val">#63554a</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#261d18"></span></td>
+          <td><code>--rule-dark</code></td>
+          <td class="nm">fio-escuro</td>
+          <td>réguas principais (masthead, thead)</td>
+          <td class="val">oklch(0.24 0.018 50)</td>
+          <td class="val">#261d18</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#b4a189"></span></td>
+          <td><code>--rule-soft</code></td>
+          <td class="nm">fio-suave</td>
+          <td>fios secundários, pontilhados</td>
+          <td class="val">oklch(0.72 0.04 75)</td>
+          <td class="val">#b4a189</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#c4b59f"></span></td>
+          <td><code>--rule-divider</code></td>
+          <td class="nm">fio-divisor</td>
+          <td>divisores leves</td>
+          <td class="val">oklch(0.78 0.035 78)</td>
+          <td class="val">#c4b59f</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#86262b"></span></td>
+          <td><code>--accent</code></td>
+          <td class="nm">acento</td>
+          <td>ênfase única (título, capitular)</td>
+          <td class="val">oklch(0.42 0.13 22)</td>
+          <td class="val">#86262b</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="pal" data-screen-label="P4 Meia-noite">
+    <div class="palhead">
+      <div>
+        <h2>P4 · Meia-noite</h2>
+        <p class="nota">data-theme=&quot;noite&quot; — inversão para leitura noturna; na impressão reverte ao grafite.</p>
+      </div>
+      <div class="bar"><span class="chip" style="background:#1b1813" title="papel"></span><span class="chip" style="background:#2a2520" title="papel-código"></span><span class="chip" style="background:#f2eee6" title="tinta"></span><span class="chip" style="background:#e1ded5" title="tinta-corpo"></span><span class="chip" style="background:#cecac2" title="tinta-texto"></span><span class="chip" style="background:#aeaaa2" title="tinta-suave"></span><span class="chip" style="background:#bbb7af" title="tinta-itálico"></span><span class="chip" style="background:#867f73" title="mono"></span><span class="chip" style="background:#8c857a" title="legenda"></span><span class="chip" style="background:#d4d0c8" title="fio-escuro"></span><span class="chip" style="background:#4d473f" title="fio-suave"></span><span class="chip" style="background:#3c3731" title="fio-divisor"></span><span class="chip" style="background:#e7885d" title="acento"></span></div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Amostra</th><th>Token</th><th>Nome</th><th>Papel</th><th>Valor declarado</th><th>Hex (sRGB)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sw" style="background:#1b1813"></span></td>
+          <td><code>--paper</code></td>
+          <td class="nm">papel</td>
+          <td>fundo da página</td>
+          <td class="val">oklch(0.21 0.01 70)</td>
+          <td class="val">#1b1813</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#2a2520"></span></td>
+          <td><code>--paper-code</code></td>
+          <td class="nm">papel-código</td>
+          <td>fundo de blocos de código</td>
+          <td class="val">oklch(0.27 0.012 70)</td>
+          <td class="val">#2a2520</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#f2eee6"></span></td>
+          <td><code>--ink</code></td>
+          <td class="nm">tinta</td>
+          <td>títulos</td>
+          <td class="val">oklch(0.95 0.012 85)</td>
+          <td class="val">#f2eee6</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#e1ded5"></span></td>
+          <td><code>--ink-body</code></td>
+          <td class="nm">tinta-corpo</td>
+          <td>destaques, links, strong</td>
+          <td class="val">oklch(0.9 0.012 85)</td>
+          <td class="val">#e1ded5</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#cecac2"></span></td>
+          <td><code>--ink-text</code></td>
+          <td class="nm">tinta-texto</td>
+          <td>corpo de texto</td>
+          <td class="val">oklch(0.84 0.012 85)</td>
+          <td class="val">#cecac2</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#aeaaa2"></span></td>
+          <td><code>--ink-soft</code></td>
+          <td class="nm">tinta-suave</td>
+          <td>citações, texto secundário</td>
+          <td class="val">oklch(0.74 0.012 85)</td>
+          <td class="val">#aeaaa2</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#bbb7af"></span></td>
+          <td><code>--ink-italic</code></td>
+          <td class="nm">tinta-itálico</td>
+          <td>itálicos</td>
+          <td class="val">oklch(0.78 0.012 85)</td>
+          <td class="val">#bbb7af</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#867f73"></span></td>
+          <td><code>--kk-mono-fg</code></td>
+          <td class="nm">mono</td>
+          <td>rótulos mono, marcadores de lista</td>
+          <td class="val">oklch(0.6 0.02 80)</td>
+          <td class="val">#867f73</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#8c857a"></span></td>
+          <td><code>--kk-caption</code></td>
+          <td class="nm">legenda</td>
+          <td>legendas, rodapé</td>
+          <td class="val">oklch(0.62 0.018 80)</td>
+          <td class="val">#8c857a</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#d4d0c8"></span></td>
+          <td><code>--rule-dark</code></td>
+          <td class="nm">fio-escuro</td>
+          <td>réguas principais (masthead, thead)</td>
+          <td class="val">oklch(0.86 0.012 85)</td>
+          <td class="val">#d4d0c8</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#4d473f"></span></td>
+          <td><code>--rule-soft</code></td>
+          <td class="nm">fio-suave</td>
+          <td>fios secundários, pontilhados</td>
+          <td class="val">oklch(0.4 0.015 75)</td>
+          <td class="val">#4d473f</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#3c3731"></span></td>
+          <td><code>--rule-divider</code></td>
+          <td class="nm">fio-divisor</td>
+          <td>divisores leves</td>
+          <td class="val">oklch(0.34 0.012 72)</td>
+          <td class="val">#3c3731</td>
+        </tr>
+        <tr>
+          <td><span class="sw" style="background:#e7885d"></span></td>
+          <td><code>--accent</code></td>
+          <td class="nm">acento</td>
+          <td>ênfase única (título, capitular)</td>
+          <td class="val">oklch(0.72 0.13 45)</td>
+          <td class="val">#e7885d</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+<div class="foot">Diretriz cromática · documentos HTML gerados por Claude Code · v1.0.0 · derivada do tema &quot;tinta sobre papel&quot;; P2 segue os tokens neutros do design system Planejamento Financeiro (<code>oklch(0.55 0.18 27)</code> como único acento saturado).</div>
+<script>
+(function () {
+  var KEY = "diretriz-tema";
+  var TEMAS = ["atual", "grafite", "oxido", "noite"];
+  var btns = Array.prototype.slice.call(document.querySelectorAll(".temas button"));
+  function apply(t) {
+    document.documentElement.setAttribute("data-theme", t);
+    btns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-tema") === t)); });
+    try { localStorage.setItem(KEY, t); } catch (e) {}
+  }
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () { apply(b.getAttribute("data-tema")); });
+  });
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  apply(TEMAS.indexOf(saved) >= 0 ? saved : "atual");
+})();
+</script>
+</body>
+</html>

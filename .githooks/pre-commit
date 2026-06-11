@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# pre-commit (ative com: git config core.hooksPath .githooks)
+#   1. branch-guard: barra commit direto em main (trabalho vai em develop/feature).
+#   2. gitleaks: barra segredos em arquivos staged (se o binário existir).
+# Nunca use --no-verify silenciosamente.
+set -uo pipefail
+
+if [ "${ALLOW_MAIN_COMMIT:-0}" != "1" ] \
+   && git rev-parse --verify -q HEAD >/dev/null 2>&1; then
+  branch="$(git symbolic-ref --short -q HEAD || echo '')"
+  case "$branch" in
+    main|master)
+      printf '✗ [branch-guard] commit direto em %s bloqueado — use develop/feature branch.\n' "$branch" >&2
+      printf '  Exceção pontual: ALLOW_MAIN_COMMIT=1 git commit ...\n' >&2
+      exit 1
+      ;;
+  esac
+fi
+
+GL="$(command -v gitleaks 2>/dev/null || true)"
+if [ -z "$GL" ]; then
+  printf '[gitleaks] binário ausente — commit liberado sem scan de segredos.\n' >&2
+  exit 0
+fi
+if ! "$GL" git --staged --redact --no-banner; then
+  printf '✗ [gitleaks] possível segredo nos arquivos staged — commit bloqueado.\n' >&2
+  exit 1
+fi
+exit 0

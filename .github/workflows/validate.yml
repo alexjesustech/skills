@@ -1,0 +1,16 @@
+name: validate-skills
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Valida estrutura das skills
+        run: bash scripts/validate-skills.sh
+      - name: Higiene de repositório público
+        run: bash scripts/check-public-hygiene.sh
