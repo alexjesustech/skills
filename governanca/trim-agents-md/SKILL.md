@@ -113,7 +113,7 @@ arquivo de estado/handoff entre sessões, atualize-o. Não commitar/pushar sem o
 
 ## Adaptação
 
-- **Caminho do script**: instale esta pasta em `~/.claude/skills/trim-agents-md/` (global)
+- **Caminho do script**: instale esta pasta em `~/.claude/skills/trim-agents-md/` (Claude Code) ou `~/.gemini/config/plugins/<seu-plugin>/skills/trim-agents-md/` (Antigravity)
   ou `<repo>/.claude/skills/trim-agents-md/` (por projeto) e chame o
   `scripts/measure_sections.py` pelo caminho correspondente.
 - **Limite**: 40k chars é o limiar do aviso do Claude Code; se a sua ferramenta usar outro,

@@ -7,6 +7,9 @@ projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Unreleased]
 
+### Adicionado
+
+- **Documentação de Instalação**: Adicionadas instruções específicas de carregamento nativo de skills para o Antigravity no README e na seção de adaptação das skills `trim-agents-md` e `validate-harness`.
 ### Removido
 
 - Ferramentas de curadoria saíram do repositório (`scripts/check-public-hygiene.sh`

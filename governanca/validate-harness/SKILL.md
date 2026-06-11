@@ -39,8 +39,8 @@ bash <pasta-desta-skill>/validate-harness.sh <dir>  # valida <dir>/.claude
 
 ## Adaptação
 
-Auto-contida: nenhum placeholder obrigatório. Instale em `~/.claude/skills/validate-harness/`
-(global) ou `<repo>/.claude/skills/validate-harness/` (por projeto). As checagens 1–3 assumem
+Auto-contida: nenhum placeholder obrigatório. Instale em `~/.claude/skills/validate-harness/` (Claude Code) ou `~/.gemini/config/plugins/<seu-plugin>/skills/validate-harness/` (Antigravity)
+ou `<repo>/.claude/skills/validate-harness/` (por projeto). As checagens 1–3 assumem
 o layout padrão `.claude/{agents,skills,rules}`; a checagem de ADR assume `docs/adr/`. Ajuste
 esses caminhos no script se o projeto usa outra convenção. Falhas só ocorrem para problemas
 reais (frontmatter ausente/malformado, JSON inválido, hook quebrado); o resto é warning.
