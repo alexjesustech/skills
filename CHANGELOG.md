@@ -9,7 +9,17 @@ projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ### Adicionado
 
+- **14 skills novas** (segunda leva, generalizadas de uso real): `dados/`
+  `retrieval-eval`, `sqlite-migration`, `migration-safe`; `especificacao/`
+  `prd-authoring`, `spec-driven-development`, `adr-authoring`; `git/`
+  `branch-fan-in`, `prune-branches`; `governanca/` `conventional-commits`
+  (guia de estilo, complementar a automações de commit); `mcp/` `mcp-debug`,
+  `mcp-tool`; `qualidade/` `error-triage`, `harness-evals` (avaliação da
+  bateria de testes do código — não de modelos LLM); `scaffold/`
+  `scaffold-module-full` (Laravel + React/Inertia). Catálogo do README
+  reordenado por categoria.
 - **Documentação de Instalação**: Adicionadas instruções específicas de carregamento nativo de skills para o Antigravity no README e na seção de adaptação das skills `trim-agents-md` e `validate-harness`.
+
 ### Removido
 
 - Ferramentas de curadoria saíram do repositório (`scripts/check-public-hygiene.sh`
