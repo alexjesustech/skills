@@ -16,13 +16,19 @@ extraídas de uso real e **generalizadas** para qualquer repositório.
 |---|---|---|
 | `comunicacao/` | [diretriz-cromatica-html](./comunicacao/diretriz-cromatica-html/) | 4 paletas OKLCH + seletor persistente + impressão para documentos HTML de leitura |
 | `comunicacao/` | [gera-fluxo](./comunicacao/gera-fluxo/) | Padrão de diagramas SVG: semântica de cores, legibilidade, saída versionada |
+| `dados/` | [chunking-rules](./dados/chunking-rules/) | Governança determinística do pipeline de chunking (versionar modelo/parâmetros → reindex) |
+| `dados/` | [ir-modeling](./dados/ir-modeling/) | Evolução segura de schema de IR com Zod estrito + SemVer (`schemaVersion`) |
 | `dados/` | [migration-safe](./dados/migration-safe/) | Checklist de migration segura (backward compat, rollback, índices, zero-downtime) |
 | `dados/` | [retrieval-eval](./dados/retrieval-eval/) | Valida pipeline de retrieval com golden dataset (Recall/MRR/NDCG + gates) |
 | `dados/` | [sqlite-migration](./dados/sqlite-migration/) | Migrations SQLite com cabeçalho, idempotência e rastreabilidade |
 | `especificacao/` | [adr-authoring](./especificacao/adr-authoring/) | Redação de ADRs (formato Nygard) com alternativas obrigatórias |
+| `especificacao/` | [planta-baixa](./especificacao/planta-baixa/) | Vocabulário pt-BR de planta baixa → campos de uma IR/schema (didática, domínio CAD) |
 | `especificacao/` | [prd-authoring](./especificacao/prd-authoring/) | Estrutura/normaliza PRD + gap analysis (2 modos) |
 | `especificacao/` | [spec-driven-development](./especificacao/spec-driven-development/) | Disciplina SDD: spec → aceite → código → refactoring, com circuit breaker |
 | `git/` | [branch-fan-in](./git/branch-fan-in/) | Integra branches paralelas que editam o mesmo registro compartilhado |
+| `git/` | [gitea-claude-mention](./git/gitea-claude-mention/) | Workflow @claude em issues/PRs de Gitea self-hosted (act_runner) |
+| `git/` | [gitea-pr](./git/gitea-pr/) | Push de branch + abertura de PR via API do Gitea com token custodiado |
+| `git/` | [gitea-pr-merge](./git/gitea-pr-merge/) | Revisão e merge de PR no Gitea (gate: mergeable + CI verde + confirmação humana) |
 | `git/` | [prune-branches](./git/prune-branches/) | Poda segura de branches mergeadas (dry-run, multi-remote, proteções) |
 | `governanca/` | [conventional-commits](./governanca/conventional-commits/) | Guia de estilo de mensagens de commit + trailers de co-autoria de IA |
 | `governanca/` | [trim-agents-md](./governanca/trim-agents-md/) | Enxuga AGENTS.md/CLAUDE.md acima de 40k chars movendo REFERÊNCIA para `docs/` (regras ficam) |
@@ -31,7 +37,9 @@ extraídas de uso real e **generalizadas** para qualquer repositório.
 | `mcp/` | [mcp-tool](./mcp/mcp-tool/) | Implementa/altera tool MCP — checklist contrato→teste→implementação→auditoria |
 | `qualidade/` | [error-triage](./qualidade/error-triage/) | Classifica erro esperado × real via catálogo determinístico |
 | `qualidade/` | [harness-evals](./qualidade/harness-evals/) | Pirâmide de testes, métricas e gate de qualidade para código gerado por IA |
+| `qualidade/` | [resolve-knowndebt](./qualidade/resolve-knowndebt/) | Lista, prioriza e resolve dívidas `$knownDebts` em arch tests (Pest), mantendo o guard puro |
 | `scaffold/` | [scaffold-module-full](./scaffold/scaffold-module-full/) | Scaffold de módulo completo Laravel + React/Inertia (migration, testes, ACL) |
+| `scaffold/` | [shadcn](./scaffold/shadcn/) | Gestão de componentes shadcn/ui via CLI: composição, regras críticas, presets, smart merge (upstream: ui.shadcn.com) |
 
 ## Instalação por ferramenta
 
