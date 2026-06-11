@@ -9,6 +9,30 @@ projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ### Adicionado
 
+- **dados/chunking-rules** v1.0.0 — governança determinística do pipeline de
+  chunking: versionamento de modelo/parâmetros (mudou → reindex), invariante de
+  modelo único, protocolo de cutover com dual-write e gate de regressão.
+- **dados/ir-modeling** v1.0.0 — evolução segura de schema de representação
+  intermediária com Zod estrito + SemVer (`schemaVersion`): minor =
+  opcional/default, major = migração explícita.
+- **especificacao/planta-baixa** v1.0.0 — vocabulário pt-BR de planta baixa
+  (cômodos, paredes, aberturas, medidas) mapeado para campos de uma IR/schema;
+  didática, domínio CAD.
+- **git/gitea-pr**, **git/gitea-pr-merge**, **git/gitea-claude-mention**
+  v1.0.0 — fluxo completo para Gitea self-hosted: push + PR via API com token
+  de longa vida (`<GITEA_HOST>`/`<OWNER>` parametrizados), merge com gate
+  (mergeable + CI verde + confirmação humana, pegadinha `MergeMessageField`),
+  e workflow @claude em issues/PRs via act_runner (asset `claude.yml` incluso).
+- **qualidade/resolve-knowndebt** v1.0.0 — lista, prioriza e resolve dívidas
+  técnicas registradas como `$knownDebts` em testes de arquitetura (Pest/arch
+  tests): inventário → priorização por esforço → fix canônico → baixa da dívida
+  → guard puro; regra "nunca `->ignoring()` novo".
+- **scaffold/shadcn** v1.0.0 — gestão de componentes shadcn/ui via CLI
+  (princípios, regras críticas de composição/estilo/formulários/ícones, presets,
+  smart merge); inclui referências `rules/`, `cli.md`, `customization.md` e
+  `mcp.md`. Derivada da documentação oficial do shadcn/ui
+  (https://ui.shadcn.com, MIT) — upstream creditado.
+
 - **14 skills novas** (segunda leva, generalizadas de uso real): `dados/`
   `retrieval-eval`, `sqlite-migration`, `migration-safe`; `especificacao/`
   `prd-authoring`, `spec-driven-development`, `adr-authoring`; `git/`

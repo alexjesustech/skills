@@ -1,0 +1,118 @@
+# Responde a menções @claude em issues e PRs de um Gitea self-hosted (com act_runner).
+# Instalado pela skill `gitea-claude-mention`.
+#
+# COMO FUNCIONA: um comentário com "@claude ..." numa issue ou PR dispara este
+# workflow; ele instala o Claude Code CLI, roda em modo headless com o contexto da
+# issue/PR (repo em checkout, somente leitura) e posta a resposta de volta como
+# comentário, via API interna do Gitea (http://gitea:3000 — mesmo nome de
+# container/rede Docker do Gitea, sem depender do TLS do reverse proxy; ajuste
+# para o seu deployment).
+#
+# PRÉ-REQUISITOS (ver SKILL.md):
+#   - Este arquivo precisa existir na BRANCH DEFAULT do repo no Gitea (semântica
+#     do evento issue_comment — ele roda a versão do workflow da branch default).
+#   - Secret `CLAUDE_CODE_OAUTH_TOKEN` cadastrado no repo (Settings → Actions →
+#     Secrets). Gerado com `claude setup-token` (usa a assinatura Claude).
+#   - Actions habilitado no repo.
+#
+# SEGURANÇA: se o runner monta /var/run/docker.sock (≈ root no host), o job só
+# pode rodar para autores na allowlist (`github.actor == '<OWNER>'`) e o Claude
+# roda com ferramentas SOMENTE LEITURA (--allowedTools). Não habilite
+# escrita/commit sem entender o risco do docker.sock.
+
+name: claude-mention
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  claude:
+    # Dispara só quando o comentário menciona @claude E o autor está autorizado.
+    # `github.actor` no issue_comment é quem escreveu o comentário.
+    # Troque '<OWNER>' pelo seu login Gitea (ver SKILL.md § Adaptação).
+    if: >-
+      ${{ contains(github.event.comment.body, '@claude')
+          && github.actor == '<OWNER>' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Dependências do job (jq)
+        run: |
+          set -eu
+          if ! command -v jq >/dev/null 2>&1; then
+            apt-get update -qq && apt-get install -y -qq jq >/dev/null
+          fi
+
+      - name: Instala o Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Reação 👀 (sinaliza que recebeu)
+        # Sem continue-on-error: o passo é resiliente via `|| true` no curl
+        # (gates de supply-chain costumam sinalizar continue-on-error em passo
+        # que toca segredo).
+        env:
+          GITEA_TOKEN: ${{ secrets.CLAUDE_GITEA_TOKEN || github.token }}
+        run: |
+          set -eu
+          API="http://gitea:3000/api/v1"
+          curl -fsS -X POST \
+            "$API/repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions" \
+            -H "Authorization: token $GITEA_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"content":"eyes"}' || true
+
+      - name: Roda o Claude (somente leitura)
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          IS_PR: ${{ github.event.issue.pull_request != null }}
+        run: |
+          set -euo pipefail
+          REQUEST="$(printf '%s' "$COMMENT_BODY" | sed 's/@claude//g')"
+          TIPO="issue"; [ "${IS_PR}" = "true" ] && TIPO="pull request"
+          PROMPT="$(cat <<EOF
+          Você está respondendo a uma menção @claude num ${TIPO} do Gitea. O
+          repositório está em checkout no diretório atual — leia os arquivos que
+          precisar para fundamentar a resposta.
+
+          Título: ${ISSUE_TITLE}
+
+          Descrição original:
+          ${ISSUE_BODY}
+
+          Pedido (comentário que mencionou você):
+          ${REQUEST}
+
+          Responda de forma objetiva, em português (Brasil), em Markdown. NÃO altere
+          arquivos nem rode comandos destrutivos — esta é uma resposta de consulta.
+          EOF
+          )"
+          claude -p "$PROMPT" \
+            --output-format text \
+            --allowedTools "Read,Grep,Glob,Bash(git log:*),Bash(git diff:*),Bash(git show:*)" \
+            | tee /tmp/claude-reply.txt
+          if [ ! -s /tmp/claude-reply.txt ]; then
+            echo "(Claude não produziu saída.)" > /tmp/claude-reply.txt
+          fi
+
+      - name: Posta a resposta no Gitea
+        env:
+          GITEA_TOKEN: ${{ secrets.CLAUDE_GITEA_TOKEN || github.token }}
+        run: |
+          set -euo pipefail
+          API="http://gitea:3000/api/v1"
+          jq -Rs '{body: ("### 🤖 Claude\n\n" + . + "\n\n<sub>via gitea-claude-mention · run " + env.GITHUB_RUN_ID + "</sub>")}' \
+            /tmp/claude-reply.txt > /tmp/payload.json
+          curl -fsS -X POST \
+            "$API/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments" \
+            -H "Authorization: token $GITEA_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d @/tmp/payload.json
+          echo "Resposta postada na issue/PR #${{ github.event.issue.number }}."
