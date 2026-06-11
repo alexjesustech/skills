@@ -28,7 +28,13 @@ cp -r <categoria>/<skill> ~/.claude/skills/<skill>          # global
 cp -r <categoria>/<skill> <repo>/.claude/skills/<skill>     # por projeto
 ```
 
-**OpenCode / Antigravity / Gemini CLI** — o conteúdo é Markdown puro: aponte o
+**Antigravity (Agy)** — instale nativamente copiando para um plugin:
+
+```bash
+cp -r <categoria>/<skill> ~/.gemini/config/plugins/<seu-plugin>/skills/<skill>
+```
+
+**OpenCode / Gemini CLI** — o conteúdo é Markdown puro: aponte o
 mecanismo de instruções da ferramenta para o `SKILL.md` (campo `instructions`
 do `opencode.json`, regra em `.agents/rules/`, comando TOML do Gemini CLI) ou
 incorpore o corpo como regra/comando. A seção **Adaptação** de cada skill lista
