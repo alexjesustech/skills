@@ -34,7 +34,7 @@ Este arquivo é a fonte única de regras; `CLAUDE.md` é um ponteiro.
 - Documentação obrigatória: toda mudança atualiza o `CHANGELOG.md`
   (`[Unreleased]`, Keep a Changelog + SemVer). Versão da skill (`TOOL · vX.Y.Z`)
   acompanha mudanças de conteúdo da skill (SemVer por skill).
-- Estado de sessão entre agentes (`docs/ESTADO.md`) é **local-only**
+- Estado de sessão entre agentes (`docs/HANDOFF.md`) é **local-only**
   (gitignored) — planejamento interno não é publicado.
 
 ## Git
