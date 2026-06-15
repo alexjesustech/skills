@@ -10,6 +10,11 @@ Cada skill é uma pasta com `SKILL.md` (frontmatter `name`/`description` +
 instruções) e, quando preciso, `scripts/` e `assets/` próprios. Todas foram
 extraídas de uso real e **generalizadas** para qualquer repositório.
 
+## Status
+
+`0.1.0` — em evolução. As skills são usáveis; o catálogo cresce e convenções podem mudar
+([SemVer](https://semver.org/lang/pt-BR/) `0.y.z`).
+
 ## Catálogo
 
 | Categoria | Skill | O que faz |
